@@ -1,7 +1,7 @@
 package Lista2308Jole;
 
 public class Lista {
-private Nodo p;
+private Nodo primeiroNodo;
 
 	public Lista(String dado){
 		Nodo primeiroNodo = new Nodo(dado);
