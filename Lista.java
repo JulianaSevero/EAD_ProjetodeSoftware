@@ -2,7 +2,10 @@ package Lista2308Jole;
 
 public class Lista {
 private Nodo primeiroNodo;
-
+/* 
+ * Início
+ * Armazena o Nodo que será o primeiroNodo elemento da lista
+ * (primeira posição) */
 	public Lista(String dado){
 		Nodo primeiroNodo = new Nodo(dado);
 		this.primeiroNodo = primeiroNodo;
@@ -10,27 +13,45 @@ private Nodo primeiroNodo;
 	public Lista(){
 		this.primeiroNodo = null;	
 	}
+       /**
+	 *
+         * Adiciona um novo elemento ao final da lista
+	 * @param dado String conteudo a ser adicionado
+         *
+	 */
 	public void adicionarNodo(String dado){
 		if(primeiroNodo == null){
 			primeiroNodo = new Nodo(dado);
 		}else{
 			Nodo novoNodo = new Nodo(dado);
-			Nodo nodoAux = primeiroNodo;
+			Nodo nodoAux = primeiroNodo; 
 			
 			while (nodoAux.getProximo() != null){
-				nodoAux = nodoAux.getProximo();
+				nodoAux = nodoAux.getProximo(); 
 			}
-			nodoAux.setProximo(novoNodo);	
+			nodoAux.setProximo(novoNodo);	// Passa para o próximo
 		}
 	}
+	/**
+  	 *
+	 *Imprime o conteudo da lista
+	 * 
+         * */ 
 	public void imprimirNodo(){
 		Nodo nodoAux = primeiroNodo;
 		while(nodoAux.getProximo() != null ){
-			System.out.println(nodoAux.getDado());
+			// Imprimir as informações do Nodo
+			System.out.println(nodoAux.getDado()); 
 			nodoAux = nodoAux.getProximo();
 		}
 		System.out.println(nodoAux.getDado());	
 	}
+	/** 
+	 * Metodo que retorna em que posiçao esta determinada 
+	 * ocorrencia do dado
+	 * @param dado String dado a ser encontrado
+	 * @return a posiçao do dado na lista (Iniciando em 0)
+	 * */
 	public int posicaoNodo(String dado){
 		Nodo nodoAux = primeiroNodo;
 		int cont = 0;
@@ -42,8 +63,12 @@ private Nodo primeiroNodo;
 				nodoAux = nodoAux.getProximo();
 			}
 		}
-		return -1;
+		return -1; // Em caso de fora do escopo
 	}
+	 /** 
+	 * Metodo que remove o nodo
+	 * @param dado 
+	 * */
 	public void removerNodo(String dado){
 		Nodo nodoAux = primeiroNodo;
 		if(primeiroNodo.getDado().equalsIgnoreCase(dado)){
@@ -57,7 +82,7 @@ private Nodo primeiroNodo;
 				}else{
 				nodoAux = nodoAux.getProximo();
 				}
-		}while(nodoAux.getProximo() != null);
+		}while(nodoAux.getProximo() != null); // Parar caso não haja mais nodos
 			}
 		}
 	}
