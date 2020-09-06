@@ -1,5 +1,5 @@
-# EAD_ProjetodeSoftware
+EAD_ProjetodeSoftware
 
-# Cadeira Técnicas Avançadas de Projeto de software
+Cadeira Técnicas Avançadas de Projeto de software
 
-# Repositório para a tarefa uso de conceitos de "código limpo"
+Repositório para a tarefa uso de conceitos de "código limpo"
