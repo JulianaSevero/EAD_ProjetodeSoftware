@@ -3,60 +3,61 @@ package Lista2308Jole;
 public class Lista {
 private Nodo p;
 
-	public Lista(String d){
-		Nodo p = new Nodo(d);
-		this.p = p;
+	public Lista(String dado){
+		Nodo primeiroNodo = new Nodo(dado);
+		this.primeiroNodo = primeiroNodo;
 	}
 	public Lista(){
-		this.p = null;	
+		this.primeiroNodo = null;	
 	}
-	public void adicionar(String d){
-		if(p == null){
-			p = new Nodo(d);
+	public void adicionar(String dado){
+		if(primeiroNodo == null){
+			primeiroNodo = new Nodo(dado);
 		}else{
-			Nodo nNodo = new Nodo(d);
-			Nodo aux = p;
+			Nodo novoNodo = new Nodo(dado);
+			Nodo nodoAux = primeiroNodo;
 			
-			while (aux.getPr() != null){
-				aux = aux.getPr();
+			while (nodoAux.getProximo() != null){
+				nodoAux = nodoAux.getProximo();
 			}
-			aux.setPr(nNodo);	
+			nodoAux.setProximo(novoNodo);	
 		}
 	}
 	public void imprimir(){
-		Nodo aux = p;
-		while(aux.getPr() != null ){
-			System.out.println(aux.getD());
-			aux = aux.getPr();
+		Nodo nodoAux = primeiroNodo;
+		while(nodoAux.getProximo() != null ){
+			System.out.println(nodoAux.getDado());
+			nodoAux = nodoAux.getProximo();
 		}
-		System.out.println(aux.getD());	
+		System.out.println(nodoAux.getDado());	
 	}
-	public int posicaoD(String D){
-		Nodo aux = p;
+	public int posicao(String dado){
+		Nodo nodoAux = primeiroNodo;
 		int cont = 0;
-		while(aux!= null){
-			if(aux.getD().equals(D)){
+		while(nodoAux!= null){
+			if(nodoAux.getDado().equals(dado)){
 				return cont;
 			}else{
 				cont ++;
-				aux = aux.getPr();
+				nodoAux = nodoAux.getProximo();
 			}
 		}
 		return -1;
 	}
-	public void remover(String D){
-		Nodo aux = p;
-		if(p.getD().equalsIgnoreCase(D)){
-			p = p.getPr();
+	public void remover(String dado){
+		Nodo nodoAux = primeiroNodo;
+		if(primeiroNodo.getDado().equalsIgnoreCase(dado)){
+			primeiroNodo = primeiroNodo.getProximo();
 		}else{
 			do{
 			
-			if(aux.getPr().getD().equalsIgnoreCase(D)){
-				aux.setPr(aux.getPr().getPr());
+			if(nodoAux.getProximo().getDado().equalsIgnoreCase(dado)){
+				//Se o dado for encontrado, entra neste IF
+				nodoAux.setProximo(nodoAux.getProximo().getProximo());
 				}else{
-				aux = aux.getPr();
+				nodoAux = nodoAux.getProximo();
 				}
-		}while(aux.getPr() != null);
+		}while(nodoAux.getProximo() != null);
 			}
 		}
 	}
