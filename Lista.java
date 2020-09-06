@@ -10,7 +10,7 @@ private Nodo p;
 	public Lista(){
 		this.primeiroNodo = null;	
 	}
-	public void adicionar(String dado){
+	public void adicionarNodo(String dado){
 		if(primeiroNodo == null){
 			primeiroNodo = new Nodo(dado);
 		}else{
@@ -23,7 +23,7 @@ private Nodo p;
 			nodoAux.setProximo(novoNodo);	
 		}
 	}
-	public void imprimir(){
+	public void imprimirNodo(){
 		Nodo nodoAux = primeiroNodo;
 		while(nodoAux.getProximo() != null ){
 			System.out.println(nodoAux.getDado());
@@ -31,7 +31,7 @@ private Nodo p;
 		}
 		System.out.println(nodoAux.getDado());	
 	}
-	public int posicao(String dado){
+	public int posicaoNodo(String dado){
 		Nodo nodoAux = primeiroNodo;
 		int cont = 0;
 		while(nodoAux!= null){
@@ -44,7 +44,7 @@ private Nodo p;
 		}
 		return -1;
 	}
-	public void remover(String dado){
+	public void removerNodo(String dado){
 		Nodo nodoAux = primeiroNodo;
 		if(primeiroNodo.getDado().equalsIgnoreCase(dado)){
 			primeiroNodo = primeiroNodo.getProximo();
