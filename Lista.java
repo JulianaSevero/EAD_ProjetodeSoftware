@@ -24,8 +24,9 @@ private Nodo primeiroNodo;
 			primeiroNodo = new Nodo(dado);
 		}else{
 			Nodo novoNodo = new Nodo(dado);
-			Nodo nodoAux = primeiroNodo; 
-			
+			Nodo nodoAux = primeiroNodo;  
+			//  nodo auxiliar foi acrescentado para conseguirmos percorrer cada índice da nossa lista (com auxílio do while)
+			//   Iniciando pelo nodo de posição 0 e indo para as outras posições se ele não está numa posição vazia
 			while (nodoAux.getProximo() != null){
 				nodoAux = nodoAux.getProximo(); 
 			}
