@@ -1,62 +1,89 @@
 package Lista2308Jole;
 
 public class Lista {
-private Nodo p;
-
-	public Lista(String d){
-		Nodo p = new Nodo(d);
-		this.p = p;
+private Nodo primeiroNodo;
+/* 
+ * Início
+ * Armazena o Nodo que será o primeiroNodo elemento da lista
+ * (primeira posição) */
+	public Lista(String dado){
+		Nodo primeiroNodo = new Nodo(dado);
+		this.primeiroNodo = primeiroNodo;
 	}
 	public Lista(){
-		this.p = null;	
+		this.primeiroNodo = null;	
 	}
-	public void adicionar(String d){
-		if(p == null){
-			p = new Nodo(d);
+       /**
+	 *
+         * Adiciona um novo elemento ao final da lista
+	 * @param dado String conteudo a ser adicionado
+         *
+	 */
+	public void adicionarNodo(String dado){
+		if(primeiroNodo == null){
+			primeiroNodo = new Nodo(dado);
 		}else{
-			Nodo nNodo = new Nodo(d);
-			Nodo aux = p;
-			
-			while (aux.getPr() != null){
-				aux = aux.getPr();
+			Nodo novoNodo = new Nodo(dado);
+			Nodo nodoAux = primeiroNodo;  
+			//  nodo auxiliar foi acrescentado para conseguirmos percorrer cada índice da nossa lista (com auxílio do while)
+			//   Iniciando pelo nodo de posição 0 e indo para as outras posições se ele não está numa posição vazia
+			while (nodoAux.getProximo() != null){
+				nodoAux = nodoAux.getProximo(); 
 			}
-			aux.setPr(nNodo);	
+			nodoAux.setProximo(novoNodo);	// Passa para o próximo
 		}
 	}
-	public void imprimir(){
-		Nodo aux = p;
-		while(aux.getPr() != null ){
-			System.out.println(aux.getD());
-			aux = aux.getPr();
+	/**
+  	 *
+	 *Imprime o conteudo da lista
+	 * 
+         * */ 
+	public void imprimirNodo(){
+		Nodo nodoAux = primeiroNodo;
+		while(nodoAux.getProximo() != null ){
+			// Imprimir as informações do Nodo
+			System.out.println(nodoAux.getDado()); 
+			nodoAux = nodoAux.getProximo();
 		}
-		System.out.println(aux.getD());	
+		System.out.println(nodoAux.getDado());	
 	}
-	public int posicaoD(String D){
-		Nodo aux = p;
+	/** 
+	 * Metodo que retorna em que posiçao esta determinada 
+	 * ocorrencia do dado
+	 * @param dado String dado a ser encontrado
+	 * @return a posiçao do dado na lista (Iniciando em 0)
+	 * */
+	public int posicaoNodo(String dado){
+		Nodo nodoAux = primeiroNodo;
 		int cont = 0;
-		while(aux!= null){
-			if(aux.getD().equals(D)){
+		while(nodoAux!= null){
+			if(nodoAux.getDado().equals(dado)){
 				return cont;
 			}else{
 				cont ++;
-				aux = aux.getPr();
+				nodoAux = nodoAux.getProximo();
 			}
 		}
-		return -1;
+		return -1; // Em caso de fora do escopo
 	}
-	public void remover(String D){
-		Nodo aux = p;
-		if(p.getD().equalsIgnoreCase(D)){
-			p = p.getPr();
+	 /** 
+	 * Metodo que remove o nodo
+	 * @param dado 
+	 * */
+	public void removerNodo(String dado){
+		Nodo nodoAux = primeiroNodo;
+		if(primeiroNodo.getDado().equalsIgnoreCase(dado)){
+			primeiroNodo = primeiroNodo.getProximo();
 		}else{
 			do{
 			
-			if(aux.getPr().getD().equalsIgnoreCase(D)){
-				aux.setPr(aux.getPr().getPr());
+			if(nodoAux.getProximo().getDado().equalsIgnoreCase(dado)){
+				//Se o dado for encontrado, entra neste IF
+				nodoAux.setProximo(nodoAux.getProximo().getProximo());
 				}else{
-				aux = aux.getPr();
+				nodoAux = nodoAux.getProximo();
 				}
-		}while(aux.getPr() != null);
+		}while(nodoAux.getProximo() != null); // Parar caso não haja mais nodos
 			}
 		}
 	}
